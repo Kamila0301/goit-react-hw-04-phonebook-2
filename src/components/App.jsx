@@ -13,16 +13,12 @@ const getContacts = () => {
 };
 
 export const App = () => {
-  const [contacts, setContacts] = useState(getContacts);
-  const [filters, setFilters] = useState('');
+  const [contacts, setContact] = useState(getContacts);
+  const [filters, setFilter] = useState('');
 
   useEffect(() => {
     localStorage.setItem('contact-save', JSON.stringify(contacts));
   }, [contacts]);
-
-  const changeFilter = newName => {
-    setFilters(newName);
-  };
 
   const inputItem = newItem => {
     const contact = contacts.find(
@@ -40,11 +36,15 @@ export const App = () => {
       number: newItem.number,
     };
 
-    setContacts(prevState => [...prevState, ContactId]);
+    setContact(prevState => [...prevState, ContactId]);
+  };
+
+  const changeFilter = newName => {
+    setFilter(newName);
   };
 
   const handleDelete = contactsId => {
-    setContacts(prevState =>
+    setContact(prevState =>
       prevState.filter(contact => contact.id !== contactsId)
     );
   };
