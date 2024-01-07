@@ -14,7 +14,7 @@ const getContacts = () => {
 
 export const App = () => {
   const [contacts, setContact] = useState(getContacts);
-  const [filter, setFilter] = useState('');
+  const [filters, setFilter] = useState('');
 
   useEffect(() => {
     localStorage.setItem('contact-save', JSON.stringify(contacts));
@@ -50,7 +50,7 @@ export const App = () => {
   };
 
   const filteredContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
+    contact.name.toLowerCase().includes(filters.toLowerCase())
   );
 
   return (
@@ -59,7 +59,7 @@ export const App = () => {
       <ContactForm addInfo={inputItem} />
 
       <SectionContact>Contacts</SectionContact>
-      <Filter value={filter} onChange={changeFilter} />
+      <Filter value={filters} onChange={changeFilter} />
       <ContactList
         onDeleteContact={handleDelete}
         visibleItems={filteredContacts}
