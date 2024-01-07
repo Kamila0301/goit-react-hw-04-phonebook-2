@@ -19,8 +19,8 @@ export const ContactForm = ({ addInfo, name, number }) => {
   return (
     <Formik
       initialValues={{
-        name: name || ' ',
-        number: number || ' ',
+        name: name || '',
+        number: number || '',
       }}
       validationSchema={SignupSchema}
       onSubmit={(values, actions) => {
@@ -33,13 +33,13 @@ export const ContactForm = ({ addInfo, name, number }) => {
           <label>
             <p>Name</p>
             <input
-              type="text"
+              type="name"
               name="name"
               pattern="^[a-zA-Zа-яА-Я]+(([' \\-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
               value={values.name}
               onChange={handleChange}
             />
-            <StyledError type="text" name="name" component="div" />
+            <StyledError type="name" name="name" component="div" />
           </label>
 
           <label>
