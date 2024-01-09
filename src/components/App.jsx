@@ -9,6 +9,8 @@ const getContacts = () => {
   const savedContacts = localStorage.getItem('contact-save');
   if (savedContacts !== null) {
     return JSON.parse(savedContacts);
+  } else {
+    return [];
   }
 };
 
